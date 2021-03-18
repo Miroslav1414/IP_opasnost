@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	
+	
+
+
+
+<ui:composition>
+<div class="navbar navbar-expand" style="background-color: rgb(225, 227, 247);">
+		<h:form>
+			<h:commandLink styleClass="nav-link font-weight-bold" action="#{adminBean.login}" value="Pocetna stranica"></h:commandLink>
+		</h:form>
+		<h:form>
+			<h:commandLink styleClass="nav-link font-weight-bold" id="registracija" action="#{userBean.registracija}" value="Odobravanje registracije"></h:commandLink>
+		</h:form>
+		<h:form>
+			<h:commandLink styleClass="nav-link font-weight-bold" action="#{userBean.administracija}" value="Administracija korisnika"></h:commandLink>
+		</h:form>	
+		<h:form>
+			<h:commandLink styleClass="nav-link font-weight-bold" action="#{kategorijeOpasnostiBean.administracija}" value="Kategorija opasnosti"></h:commandLink>
+		</h:form>
+		<h:form>
+			<h:commandLink styleClass="nav-link font-weight-bold" action="#{pomocBean.administracija}" value="Pregled pomoci"></h:commandLink>
+		</h:form>
+		<h:form>
+			<h:commandLink styleClass="nav-link font-weight-bold" action="${adminBean.logout}" value="Odjava"></h:commandLink>
+		</h:form>
+			
+</div>
+</ui:composition>
+</html>
+
+
+

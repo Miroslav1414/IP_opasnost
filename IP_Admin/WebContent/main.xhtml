@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+
+
+<h:head>
+<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<title>Admin aplikacija</title>	
+</h:head>
+
+<h:body>
+
+	<ui:include src="/WEB-INF/elementi/header.xhtml"></ui:include>
+	<ui:include src="/WEB-INF/elementi/navbar.xhtml"></ui:include>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-3 col-md-3 col-sm-12 col-xs-12">
+				
+
+				<h:form id ="broj_registovanih">
+				<div class="d-flex justify-content-center align-items-center">
+					<h:outputLabel>Broj ukupno registrovanih korisnika</h:outputLabel>
+				</div>
+				<div class="d-flex justify-content-center align-items-center">
+					<h:outputText  value="#{adminBean.ukupnoRegistrovanih}"></h:outputText>
+				</div>
+				<div class="d-flex justify-content-center align-items-center">
+					<h:outputLabel>Broj trenutno prijavljenih korisnika</h:outputLabel>
+				</div>					
+				<div class="d-flex justify-content-center align-items-center">
+					<h:outputText value ="#{adminBean.trenutnoPrijavljeni}"></h:outputText>
+				</div>
+					
+					
+			 		<p:poll listener="#{adminBean.refreshRegistrovani}" interval="20" update="broj_registovanih" />
+				</h:form>			
+			</div>
+			<div class="col-xl-9 col-md-9 col-sm-12 col-xs-12">
+				<h:form>
+				    <p:growl id="grafikon" showDetail="true" />	     
+				    <p:barChart id="bargraf" model="#{adminBean.chart}" style="width: 100%; height: 500px;"></p:barChart>
+				    <p:poll id="prvi" listener="#{adminBean.refreshChart}" interval="60" update="bargraf" />
+				</h:form>
+			</div>
+		</div>
+	</div>
+	
+	
+</h:body>
+</html>
